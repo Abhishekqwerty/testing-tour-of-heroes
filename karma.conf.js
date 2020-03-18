@@ -28,7 +28,18 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['PhantomJS'],
-    singleRun: false
+    customLaunchers: {
+  ChromeHeadless: {
+    base: 'Chrome',
+    flags: [
+      '--headless',
+      '--disable-gpu',
+      '--no-sandbox',
+      '--remote-debugging-port=9876',
+    ]
+  }
+},
+browsers: ['ChromeHeadless'],
+singleRun: true
   });
 };
